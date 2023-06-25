@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { getInitialPropsFromRequestBody } from '../utilities/NextJsUtilities';
+import { NextPage } from 'next';
 
 type HelloWorldTemplateProps = {
   name: string
 }
 
 
-const HelloWorld = props => {
+const HelloWorld: NextPage<HelloWorldTemplateProps> = props => {
 
   const initialProps = props as HelloWorldTemplateProps;
 
@@ -17,5 +18,5 @@ const HelloWorld = props => {
   );
 };
 
-HelloWorld.getInitialProps = getInitialPropsFromRequestBody
+HelloWorld.getInitialProps = getInitialPropsFromRequestBody;
 export default HelloWorld;

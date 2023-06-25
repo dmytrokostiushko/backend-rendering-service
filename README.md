@@ -62,14 +62,17 @@ $ yarn test:cov
 
 ## Views
 
-To add a new view - create a new template under src/client/pages. 
-This will make this new page accessible over url: `/view/NewTemplateName` 
+To add a new view
+- create a new template under src/client/pages. 
+- register a path mappings inside the view.controller.ts for get and post requests
+
+This will make this new page accessible over url: `/NewTemplateName` 
 In order to pass additional properties you mush implement `getInitalPropsFunction` function inside the class page 
 component or add it as a property of the functional component, you can see example in /src/client/pages/HelloWorld.tsx.
 
 `HelloWorld.getInitialProps = getInitialPropsFromRequestBody`
 
-If you implement it the same way - you will be able to pass inital properties to the request body.
+If you implement it the same way - you will be able to pass initial properties to the request body.
 
 ## Pdf and Html rendering 
 
@@ -83,7 +86,7 @@ To try out the functionality try running the server on the port 3003 and then ex
 **Generating HTML page**
 
 ``` bash
-curl --location 'http://localhost:3003/view/HelloWorld?format=html' \
+curl --location 'http://localhost:3003/HelloWorld?format=html' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "World"
@@ -93,7 +96,7 @@ curl --location 'http://localhost:3003/view/HelloWorld?format=html' \
 **Generating PDF page**
 
 ``` bash
-curl --location 'http://localhost:3003/view/HelloWorld?format=pdf' \
+curl --location 'http://localhost:3003/HelloWorld?format=pdf' \
 --header 'Content-Type: application/json' \
 --data '{
     "name": "World"
