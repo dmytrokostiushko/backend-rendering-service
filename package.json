@@ -29,6 +29,7 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@types/react": "^18.0.17",
+    "chart.js": "^4.3.0",
     "class-validator": "^0.13.2",
     "next": "12",
     "puppeteer": "^20.7.2",

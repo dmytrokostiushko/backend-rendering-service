@@ -687,6 +687,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@kurkle/color@^0.3.0":
+  "integrity" "sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw=="
+  "resolved" "https://registry.npmjs.org/@kurkle/color/-/color-0.3.2.tgz"
+  "version" "0.3.2"
+
 "@nestjs/cli@^9.0.0":
   "integrity" "sha512-fZzE2f/PnIhbwGg6dKniwwOjQt71g6EUKdgW1oOohUq/Bi79fpzj0Zoucej+9e75HZmVhCUuh8eN/xYqiLmk6g=="
   "resolved" "https://registry.npmjs.org/@nestjs/cli/-/cli-9.1.1.tgz"
@@ -2118,6 +2123,13 @@
   "integrity" "sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA=="
   "resolved" "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   "version" "0.7.0"
+
+"chart.js@^4.3.0":
+  "integrity" "sha512-ynG0E79xGfMaV2xAHdbhwiPLczxnNNnasrmPEXriXsPJGjmhOBYzFVEsB65w2qMDz+CaBJJuJD0inE/ab/h36g=="
+  "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.3.0.tgz"
+  "version" "4.3.0"
+  dependencies:
+    "@kurkle/color" "^0.3.0"
 
 "chokidar@^3.5.2", "chokidar@^3.5.3", "chokidar@3.5.3":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
