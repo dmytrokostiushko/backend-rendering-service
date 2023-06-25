@@ -10,17 +10,17 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/pulimoodan/tnpn/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/pulimoodan/tnpn" />
+  <a href="https://github.com/dimitrij94/backend-rendering-service/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/dimitrij94/backend-rendering-service" />
   </a>
-  <a href="https://github.com/pulimoodan/tnpn">
-    <img src="https://img.shields.io/github/repo-size/pulimoodan/tnpn" />
+  <a href="https://github.com/dimitrij94/backend-rendering-service/backend-rendering-service">
+    <img src="https://img.shields.io/github/repo-size/dimitrij94/backend-rendering-service" />
   </a>
-  <a href="https://github.com/pulimoodan/pulimoodan/issues">
-    <img alt="Issues" src="https://img.shields.io/github/issues/pulimoodan/tnpn?color=0088ff" />
+  <a href="https://github.com/dimitrij94/backend-rendering-service/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/dimitrij94/backend-rendering-service?color=0088ff" />
   </a>
-  <a href="https://github.com/pulimoodan/pulimoodan/pulls">
-    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/pulimoodan/tnpn?color=0088ff" />
+  <a href="https://github.com/dimitrij94/backend-rendering-service/pulls">
+    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/dimitrij94/backend-rendering-service?color=0088ff" />
   </a>
 </p>
 
