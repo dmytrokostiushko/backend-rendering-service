@@ -17,6 +17,7 @@ export class ViewSessionService {
   }
 
   remove(sessionId: string): void {
+    this.logger.verbose(`Removing session ${sessionId}`);
     const removed = this.localSession.delete(sessionId);
     if (!removed) {
       this.logger.warn(`Failed to remove session with id ${sessionId}`);
@@ -34,7 +35,7 @@ export class ViewSessionService {
   }
 
   get(sessionId: string): any | undefined {
-    this.logger.log(`Attempting to retrieve session with id: ${sessionId}`);
+    this.logger.verbose(`Attempting to retrieve session with id: ${sessionId}`);
     return this.localSession.get(sessionId);
   }
 

@@ -34,12 +34,14 @@ export class ViewService implements OnModuleInit, OnModuleDestroy {
 
   async renderNextJsPage(req: Request,
                          res: Response) {
-    const parsedUrl = parse(req.url, true);
+    const url = req.url;
+    const parsedUrl = parse(url, true);
     return await this.getNextServer()
       .render(req, res, parsedUrl.pathname, parsedUrl.query)
       .catch(e => {
-        this.logger.error('Failed to process');
+        this.logger.error(`Failed to render nextjs page ${url}`)
         this.logger.error(e);
+        res.status(500).send()
       });
   }
 

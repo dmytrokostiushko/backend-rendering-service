@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Controller, Get, Logger, Post, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ViewService } from './view.service';
 import { ViewSessionService } from './view-session.service';
@@ -12,6 +12,9 @@ export const format_query_name = 'format';
 
 @Controller('/')
 export class ViewController {
+
+  private readonly logger = new Logger(ViewController.name);
+
   constructor(private viewService: ViewService,
               private viewSessionService: ViewSessionService,
               private viewPdfService: ViewPdfService) {
@@ -42,7 +45,9 @@ export class ViewController {
     const requestFormat: 'html' | 'pdf' = getFormat(queryFormat);
     switch (requestFormat) {
       case 'html':
+        this.logger.log(`Attempting to render a nextjs page ${req.url}`);
         await this.viewService.renderNextJsPage(req, res);
+        this.logger.log(`Finished rendering nextjs page ${req.url}`);
         break;
       case 'pdf':
         await this.viewPdfService.renderPdfPage(req, res);
