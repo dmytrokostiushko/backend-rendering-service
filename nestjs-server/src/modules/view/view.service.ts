@@ -15,7 +15,7 @@ export class ViewService implements OnModuleInit, OnModuleDestroy {
     try {
       this.server = next({
         dev: process.env.NODE_ENV !== 'production',
-        dir: './src/client',
+        dir: `${process.env.APP_ROOT_DIR}/src/client`,
       });
       await this.server.prepare();
       this.logger.log('Nest.js service initialized');

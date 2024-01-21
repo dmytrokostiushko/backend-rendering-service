@@ -59,15 +59,26 @@ export class PuppeteerService implements OnModuleInit, OnModuleDestroy {
     });
   }
 
-  private async initializeBrowser(): Promise<Browser> {
+  private initializeBrowser(): Promise<Browser> {
     this.logger.verbose('Attempting to start the puppeteer browser');
-    return await puppeteer.launch({
-      headless: 'new',
-      args: ['--disable-dev-shm-usage'],
-    }).then(resp => {
-      this.logger.verbose('Browser launched');
-      return resp;
-    });
+    try {
+      return puppeteer.launch({
+        headless: 'new',
+        args: ['--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'],
+      })
+        .catch(e => {
+          this.logger.error('Failed to start browser');
+          this.logger.error(e);
+          throw e;
+        })
+        .then(resp => {
+          this.logger.verbose('Browser launched');
+          return resp;
+        });
+    } catch (e) {
+      this.logger.error('Failed to start browser');
+      this.logger.error(e);
+    }
   }
 
   private closeBrowser(): Promise<void> {

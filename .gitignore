@@ -1,4 +1,5 @@
 node_modules
 .idea
 dist
-src/client/.next/
+src/nextjs-server/.next/
+nestjs-server/.env.local

@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "rootDir": "./",
     "baseUrl": "./",
     "incremental": true,
@@ -18,5 +18,6 @@
   "ts-node": {
     "files": true
   },
-  "include": ["src/server", "test", "src/common"]
+  "include": [
+    "", "test", "src/common"]
 }
