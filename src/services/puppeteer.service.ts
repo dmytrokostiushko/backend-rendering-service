@@ -1,21 +1,16 @@
-import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import puppeteer, { Browser, HTTPResponse, Page, PDFOptions } from 'puppeteer';
+import * as Buffer from 'buffer';
 
 
-@Injectable()
-export class PuppeteerService implements OnModuleInit, OnModuleDestroy {
+export class PuppeteerService {
 
-  private readonly logger = new Logger(PuppeteerService.name);
+  private readonly logger = console.log;
   private browser: Browser;
 
-
-  async onModuleInit(): Promise<void> {
-    this.browser = await this.initializeBrowser();
+  constructor(browser: Browser) {
+    this.browser = browser;
   }
 
-  async onModuleDestroy(): Promise<void> {
-    await this.closeBrowser();
-  }
 
   async renderPage(pageUrl: string, options: PDFOptions = { format: 'A4' }): Promise<Buffer> {
     const page = await this.createNewPage();
@@ -26,17 +21,17 @@ export class PuppeteerService implements OnModuleInit, OnModuleDestroy {
   }
 
   private createNewPage(): Promise<Page> {
-    this.logger.verbose('Attempting to create new browser page');
+    // this.logger.verbose('Attempting to create new browser page');
     return this.browser.newPage().then(resp => {
-      this.logger.verbose('Successfully created new browser page');
+      // this.logger.verbose('Successfully created new browser page');
       return resp;
     });
   }
 
   private navigateToPage(pageUrl: string, page: Page): Promise<HTTPResponse | null> {
-    this.logger.verbose(`Attempting to navigate to the ${pageUrl}`);
+    // this.logger.verbose(`Attempting to navigate to the ${pageUrl}`);
     return page.goto(pageUrl, { waitUntil: 'networkidle0' }).then(resp => {
-      this.logger.verbose(`Successfully navigated to the ${pageUrl}`);
+      // this.logger.verbose(`Successfully navigated to the ${pageUrl}`);
       return resp;
     });
   }
@@ -44,48 +39,49 @@ export class PuppeteerService implements OnModuleInit, OnModuleDestroy {
   private printPage(pageUrl: string,
                     page: Page,
                     options: PDFOptions): Promise<Buffer> {
-    this.logger.verbose(`Attempting to create pdf representation of the page ${pageUrl}:`);
+    // this.logger.verbose(`Attempting to create pdf representation of the page ${pageUrl}:`);
     return page.pdf(options).then(resp => {
-      this.logger.verbose(`Successfully created pdf representation of the page ${pageUrl}:`);
+      // this.logger.verbose(`Successfully created pdf representation of the page ${pageUrl}:`);
       return resp;
     });
   }
 
   private closePage(page: Page): Promise<void> {
-    this.logger.verbose(`Attempting to close browser page url: ${page.url()}`);
+    // this.logger.verbose(`Attempting to close browser page url: ${page.url()}`);
     return page.close().then(resp => {
-      this.logger.verbose(`Browser page closed url: ${page.url()}`);
+      // this.logger.verbose(`Browser page closed url: ${page.url()}`);
       return resp;
     });
   }
 
-  private initializeBrowser(): Promise<Browser> {
-    this.logger.verbose('Attempting to start the puppeteer browser');
+  public static initializeBrowser(): Promise<Browser> {
+    // this.logger.verbose('Attempting to start the puppeteer browser');
     try {
       return puppeteer.launch({
         headless: 'new',
         args: ['--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'],
       })
         .catch(e => {
-          this.logger.error('Failed to start browser');
-          this.logger.error(e);
+          // this.logger.error('Failed to start browser');
+          // this.logger.error(e);
           throw e;
         })
         .then(resp => {
-          this.logger.verbose('Browser launched');
+          // this.logger.verbose('Browser launched');
           return resp;
         });
     } catch (e) {
-      this.logger.error('Failed to start browser');
-      this.logger.error(e);
+      // this.logger.error('Failed to start browser');
+      // this.logger.error(e);
+      throw e;
     }
   }
 
   private closeBrowser(): Promise<void> {
-    this.logger.verbose('Attempting to close browser');
+    // this.logger.verbose('Attempting to close browser');
     return this.browser.close()
       .then(resp => {
-        this.logger.verbose('Browser closed');
+        // this.logger.verbose('Browser closed');
         return resp;
       });
   }
